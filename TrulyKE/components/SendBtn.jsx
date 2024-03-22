@@ -1,6 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, View, StyleSheet } from 'react-native';
-import { SIZES } from '../constants';
+import { COLORS, SIZES } from '../constants';
 import { Ionicons } from '@expo/vector-icons';
 
 const SendBtn = ({ onPress }) => {
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
     button: {
         width: '100%', // Make the button take up the full width of its container
         height: '100%', // Make the button take up the full height of its container
-        backgroundColor: '#007AFF',
+        backgroundColor: COLORS.primary,
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 5,

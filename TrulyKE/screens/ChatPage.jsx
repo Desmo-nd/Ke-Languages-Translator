@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { View, TextInput, Button, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, SafeAreaView, Button, KeyboardAvoidingView, Platform, StatusBar } from 'react-native';
 import { GiftedChat, InputToolbar, Send, Bubble } from 'react-native-gifted-chat';
 import axios from 'axios';
-import { SIZES } from '../constants';
+import { COLORS, SIZES } from '../constants';
 import { TopBar, SendBtn } from '../components';
 
 
@@ -42,7 +42,6 @@ const ChatPage = () => {
               },
           };
   
-          // Update the style and user ID for the original Luo word message
           originalMessage.user._id = 2; // Change user ID for the Luo word message
           originalMessage.wrapperStyle = {
               right: {
@@ -59,10 +58,12 @@ const ChatPage = () => {
   };
   
     return (
-        <View style={{ height:SIZES.height }}>
+        <SafeAreaView>
+        <View style={{ height:SIZES.height, width:SIZES.width, backgroundColor:"lightgray" }}>
+             <StatusBar barStyle="light-content" backgroundColor={COLORS.primary}/>
           <TopBar/>
             <KeyboardAvoidingView
-                style={{ flex: 1 }}
+                style={{flex:1, marginBottom: 50}}
                 behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
                 keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 20}
             >
@@ -86,7 +87,8 @@ const ChatPage = () => {
                             width: SIZES.width*0.73,
                             borderRadius: 5,
                             borderWidth: 1,
-                            borderColor: 'lightgray',
+                            borderColor: 'gray',
+                            backgroundColor: '#fff',
                             padding: 10,
                             marginBottom: 10,
                         },
@@ -95,7 +97,7 @@ const ChatPage = () => {
                       <Send {...props}>
                           <Button
                               title="Send"
-                              color="#007AFF"
+                              color="#326789"
                               style={{ backgroundColor: '#FFFFFF', borderRadius: 5, paddingVertical: 10, paddingHorizontal: 20 }}
                           />
                       </Send>
@@ -105,7 +107,7 @@ const ChatPage = () => {
                             {...props}
                             wrapperStyle={{
                                 right: {
-                                    backgroundColor: '#007AFF',
+                                    backgroundColor: COLORS.primary,
                                 },
                                 left: {
                                     backgroundColor: '#EFEFEF',
@@ -118,7 +120,7 @@ const ChatPage = () => {
                           {...props}
                           containerStyle={{
                               width: SIZES.width, 
-                              backgroundColor: '#FFFFFF',
+                              backgroundColor: 'lightgray',
                               borderTopWidth: 0,
                               paddingHorizontal: 10,
                           }}
@@ -130,6 +132,7 @@ const ChatPage = () => {
               <SendBtn onPress={() => onSend([{ text: inputMessage }])} />
             </KeyboardAvoidingView>
         </View>
+        </SafeAreaView>
     );
 };
 

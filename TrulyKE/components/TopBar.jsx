@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { COLORS } from '../constants';
 
 const TopBar = ({ title }) => {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>Chat screen</Text>
+            <Text style={styles.text}>Luo screen</Text>
         </View>
     );
 };
@@ -13,15 +14,15 @@ export default TopBar;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#007AFF', 
-        height: 100, 
+        backgroundColor: COLORS.primary, 
+        height: 80, 
         justifyContent: 'center', 
         alignItems: 'center' 
     },
     text:{ 
-        color: '#FFFFFF', 
+        color: COLORS.secondary, 
         fontSize: 28, 
-        fontWeight: 'bold', 
+        fontFamily: 'semibold', 
         marginTop: 30
     }
 }); 
